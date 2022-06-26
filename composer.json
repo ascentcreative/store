@@ -1,0 +1,31 @@
+{
+  "name": "ascentcreative/store",
+  "description": "Product Catalogue",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Ascent Creative",
+      "email": "info@ascent-creative.co.uk"
+    }
+  ],
+  "require": {
+    "laravel/fortify": "^1.7",
+    "matthiasmullie/minify": "^1.3",
+    "kalnoy/nestedset": "^6.0",
+    "spatie/laravel-permission": "^4.0",
+    "doctrine/dbal": "^3.0",
+    "stripe/stripe-php": "^7.75"
+  },
+  "autoload": {
+    "psr-4": {
+      "AscentCreative\\Store\\": "src"
+    }
+  },
+  "extra": {
+    "laravel": {
+        "providers": [
+            "AscentCreative\\Store\\StoreServiceProvider"
+        ]
+    }
+}
+}
