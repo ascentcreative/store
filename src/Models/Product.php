@@ -20,7 +20,7 @@ class Product extends Model implements Sellable
 
     public $table = 'store_products';
 
-    public $fillable = ['title', 'description', 'short_description', 'sku', 'weight', 'price'];
+    public $fillable = ['title', 'description', 'short_description', 'sku', 'weight', 'price', 'is_physical', 'id_download', 'file_id'];
 
 
 
@@ -38,7 +38,7 @@ class Product extends Model implements Sellable
     }
 
     public function isPhysical() {
-        return true;
+        return $this->is_physical;
     }
 
     public function getItemWeightAttribute() {
@@ -46,7 +46,7 @@ class Product extends Model implements Sellable
     }
 
     public function isDownload() {
-        return false;
+        return $this->is_download;
     }
 
     public function getDownloadUrl() {
