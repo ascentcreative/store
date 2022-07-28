@@ -23,6 +23,13 @@ class StoreServiceProvider extends ServiceProvider
   public function boot()
   {
 
+    // create a non-public disk for storing product payloads
+    config(['filesystems.disks.store' => [
+        'driver' => 'local',
+        'root' => storage_path('store'),
+    ]]);
+
+
     $this->loadViewsFrom(__DIR__.'/../resources/views', 'store');
 
     $this->loadRoutesFrom(__DIR__.'/../routes/store-web.php');
