@@ -10,10 +10,13 @@ use AscentCreative\CMS\Traits\HasSlug;
 
 use AscentCreative\Checkout\Contracts\Sellable;
 use AscentCreative\Checkout\Traits\Shippable;
+use AscentCreative\Checkout\Traits\Sellable as SellableTrait;
+
+use AscentCreative\Store\Traits\Stockable;
 
 class Product extends Model implements Sellable
 {
-    use HasFactory, HasMetadata, HasSlug, Shippable;
+    use HasFactory, HasMetadata, HasSlug, Shippable, Stockable, SellableTrait;
 
     public $table = 'store_products';
 

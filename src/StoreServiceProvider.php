@@ -33,33 +33,38 @@ class StoreServiceProvider extends ServiceProvider
 
     $this->bootPublishes();
 
+    $this->bootCommands();
+
     
   }
 
   
 
-  // register the components
-  public function bootComponents() {
+    // register the components
+    public function bootComponents() {
 
 
-  }
+    }
 
-
-
-
-  
 
     public function bootPublishes() {
 
-      $this->publishes([
+        $this->publishes([
         __DIR__.'/../assets' => public_path('vendor/ascent/products'),
-    
-      ], 'public');
 
-      $this->publishes([
+        ], 'public');
+
+        $this->publishes([
         __DIR__.'/config/products.php' => config_path('products.php'),
-      ]);
+        ]);
 
+    }
+
+
+    public function bootCommands() {
+        $this->commands([
+            \AscentCreative\Store\Commands\ZendImport::class,
+        ]);
     }
 
 
