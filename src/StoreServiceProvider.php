@@ -6,6 +6,10 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Routing\Router;
 
+
+use AscentCreative\Offer\Facades\Discountables;
+
+
 class StoreServiceProvider extends ServiceProvider
 {
   public function register()
@@ -42,6 +46,9 @@ class StoreServiceProvider extends ServiceProvider
 
     $this->bootCommands();
 
+
+
+    Discountables::register(\AscentCreative\Store\Models\Product::class);
     
   }
 

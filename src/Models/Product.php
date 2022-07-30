@@ -10,18 +10,20 @@ use AscentCreative\CMS\Traits\HasSlug;
 
 use AscentCreative\Checkout\Contracts\Sellable;
 use AscentCreative\Checkout\Traits\Shippable;
+use AscentCreative\CMS\Traits\Autocompletable;
 use AscentCreative\Checkout\Traits\Sellable as SellableTrait;
 
 use AscentCreative\Store\Traits\Stockable;
 
 class Product extends Model implements Sellable
 {
-    use HasFactory, HasMetadata, HasSlug, Shippable, Stockable, SellableTrait;
+    use HasFactory, HasMetadata, HasSlug, Shippable, Stockable, SellableTrait, Autocompletable;
 
     public $table = 'store_products';
 
     public $fillable = ['title', 'description', 'short_description', 'sku', 'weight', 'price', 'is_physical', 'id_download', 'file_id'];
 
+    public $autocomplete_search = ['title'];
 
 
     public function getUrlAttribute() {
@@ -51,6 +53,11 @@ class Product extends Model implements Sellable
 
     public function getDownloadUrl() {
         return null;
+    }
+
+
+    public function getSellableLabelAttribute() {
+        return $this->title;
     }
 
 }
