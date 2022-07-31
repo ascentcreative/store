@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Routing\Router;
 
 
-use AscentCreative\Offer\Facades\Discountables;
+use AscentCreative\Checkout\Facades\Sellables;
 
 
 class StoreServiceProvider extends ServiceProvider
@@ -48,7 +48,7 @@ class StoreServiceProvider extends ServiceProvider
 
 
 
-    Discountables::register(\AscentCreative\Store\Models\Product::class);
+    Sellables::register(\AscentCreative\Store\Models\Product::class);
     
   }
 
