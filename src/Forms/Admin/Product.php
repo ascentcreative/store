@@ -6,8 +6,11 @@ use AscentCreative\Forms\Fields\Checkbox;
 use AscentCreative\Forms\Fields\Input;
 use AscentCreative\StackEditor\StackEditor;
 use AscentCreative\Forms\Fields\Textarea;
+use AscentCreative\Forms\Fields\HasMany;
 use AscentCreative\Forms\Fields\ForeignKeySelect;
 use AscentCreative\Forms\Fields\FileUpload;
+
+use AscentCreative\Images\Forms\Fields\GalleryUpload;
 use AscentCreative\CMS\Forms\Structure\Screenblock;
 use AscentCreative\Forms\Structure\Tabs;
 use AscentCreative\Forms\Structure\Tab;
@@ -42,11 +45,26 @@ class Product extends BaseForm {
             Tabs::make('tabs_options')
                 ->children([
 
-                    Tab::make('details', "Details")
+                    // Tab::make('details', "Details")
+                    //     ->children([
+
+                    //         StackEditor::make('description')
+
+                    //     ]),
+
+                    Tab::make('tab_images', "Images")
                         ->children([
 
-                            
-                            StackEditor::make('description')
+                            // HasMany::make('images', "Images")
+                            //     ->relationship('images')->package('store')
+                            //     ->setDescription("The first image will be used as the main image in list views."),
+
+                            // FileUpload::make('images', 'Images')
+                            //     ->multiple(true)
+                            //     ->disk('store')->path('payloads'),
+
+                            GalleryUpload::make('images', 'Product Images:')
+                                ->disk('store')->path('gallery-images')
 
                         ]),
 

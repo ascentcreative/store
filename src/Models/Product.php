@@ -30,6 +30,11 @@ class Product extends Model implements Sellable
         return route('store.product.show', ['product' => $this]);
     }
 
+    /** Eloquent Relationships */
+    public function images() {
+        return $this->morphMany(\AscentCreative\CMS\Models\Image::class, 'imageable');
+    }
+
     /** Sellable */
     public function getItemPrice() {
         return $this->price;
