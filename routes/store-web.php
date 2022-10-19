@@ -24,34 +24,18 @@ Route::namespace('AscentCreative\Store\Controllers')->middleware(['web'])->group
 
     Route::prefix('/admin/store')->middleware(['auth', 'can:administer'])->group(function() {
 
+            Route::get('/products/{product}/addstock', function(Product $product) {
+                return view('store::admin.products.modal.addstock', ['product'=>$product]);
+            })->name('admin.store.products.addstock');
 
-        // Route::get('/orders/{order}/resendconfirmation', [AscentCreative\Checkout\Controllers\Admin\OrderController::class, 'resendConfirmation']);
-        // Route::get('/orders/{order}/resendnotification', [AscentCreative\Checkout\Controllers\Admin\OrderController::class, 'resendNotification']);
-        Route::get('/products/{product}/addstock', function(Product $product) {
-            return view('store::admin.products.modal.addstock', ['product'=>$product]);
-        })->name('admin.store.products.addstock');
+            Route::post('/products/{product}/addstock', [AscentCreative\Store\Controllers\Admin\ProductController::class, 'addstock'])
+                            ->name('admin.store.products.addstock');
 
-        Route::post('/products/{product}/addstock', [AscentCreative\Store\Controllers\Admin\ProductController::class, 'addstock'])
-                        ->name('admin.store.products.addstock');
+            Route::get('/products/{product}/delete', [AscentCreative\Store\Controllers\Admin\ProductController::class, 'delete']);
+            
+            Route::resource('/products', \Admin\ProductController::class, ['as'=>'admin.store']);
 
-        Route::get('/products/{product}/delete', [AscentCreative\Store\Controllers\Admin\ProductController::class, 'delete']);
-        Route::resource('products', \Admin\ProductController::class, ['as'=>'admin.store']);
-
-        Route::resource('stock', \Admin\StockController::class, ['as'=>'admin.store']);
-
-        Route::get('/allintents', function() {
-
-            $secret = config('checkout.stripe_secret_key');
-
-            $stripe = new \Stripe\StripeClient(
-                $secret
-                 );
-                
-            return ($stripe->paymentIntents->all());
-
-        });
-
-      
+            Route::resource('stock', \Admin\StockController::class, ['as'=>'admin.store']);
 
     });
 
