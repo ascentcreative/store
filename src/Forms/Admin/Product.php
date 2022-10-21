@@ -64,7 +64,10 @@ class Product extends BaseForm {
                             //     ->disk('store')->path('payloads'),
 
                             GalleryUpload::make('images', 'Product Images:')
-                                ->disk('store')->path('gallery-images')
+                                ->disk('images')->path('gallery-images'),
+                            
+                            GalleryUpload::make('extra', 'Additional Images:')
+                                ->disk('images')->path('gallery-images')
 
                         ]),
 
