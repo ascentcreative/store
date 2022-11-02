@@ -45,12 +45,12 @@ class Product extends BaseForm {
             Tabs::make('tabs_options')
                 ->children([
 
-                    // Tab::make('details', "Details")
-                    //     ->children([
+                    Tab::make('details', "Details")
+                        ->children([
 
-                    //         StackEditor::make('description')
+                            StackEditor::make('description')
 
-                    //     ]),
+                        ]),
 
                     Tab::make('tab_images', "Images")
                         ->children([
@@ -66,9 +66,6 @@ class Product extends BaseForm {
                             GalleryUpload::make('images', 'Product Images:')
                                 ->disk('images')->path('gallery-images'),
                             
-                            GalleryUpload::make('extra', 'Additional Images:')
-                                ->disk('images')->path('gallery-images')
-
                         ]),
 
                     Tab::make('physical', "Physical")
