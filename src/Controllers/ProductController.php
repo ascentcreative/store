@@ -19,9 +19,10 @@ class ProductController extends Controller
     public $pageSize = 24;
 
     public function show(Product $product) {
-        // dd($resource); 
+        // dd($product); 
         headtitle()->add($product->title);
-        return view('store::product.show')->with('model', $product);
+
+        return view(config('store.product_show_blade', 'store::product.show'))->with('model', $product);
     }
 
 
