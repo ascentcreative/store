@@ -23,7 +23,7 @@ class Product extends Model implements Sellable
 
     public $table = 'store_products';
 
-    public $fillable = ['title', 'description', 'short_description', 'sku', 'weight', 'price', 'is_physical', 'id_download', 'file_id'];
+    public $fillable = ['id', 'title', 'description', 'short_description', 'sku', 'weight', 'price', 'is_physical', 'id_download', 'file_id'];
 
     public $autocomplete_search = ['title'];
 
