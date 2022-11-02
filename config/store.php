@@ -9,8 +9,7 @@ return [
     'product_show_blade' => 'store::product.show',
 
     'models' => [
-        // 'product' => 'AscentCreative\Store\Models\Product',
-        'product' => 'App\Models\Product',
+        'product' => 'AscentCreative\Store\Models\Product',
     ]
     
 ];
