@@ -14,7 +14,8 @@ use AscentCreative\CMS\Admin\UI\Index\Column;
 class ProductController extends AdminBaseController
 {
 
-    static $modelClass = 'AscentCreative\Store\Models\Product';
+    // static $modelClass = 'AscentCreative\Store\Models\Product';
+    static $modelClass = 'Product';
     static $bladePath = 'store::admin.products';
     static $formClass = 'AscentCreative\Store\Forms\Admin\Product';
 

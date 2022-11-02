@@ -21,6 +21,27 @@ class StoreServiceProvider extends ServiceProvider
     $this->mergeConfigFrom(
         __DIR__.'/../config/store.php', 'store'
     );
+    
+    $this->registerModelAliases();
+  }
+
+
+  public function registerModelAliases() {
+
+        // For each model:
+        // 1) Set up an alias for the Facade (allows Page::method() calls)
+        $aliases['Product'] = \AscentCreative\Store\Facades\ProductFacade::class;
+
+        // 2) resolve the key in getFacadeAccessor()
+        $this->app->bind('product',function(){
+            $cls = config('store.models.product');
+            return new $cls();
+        });
+
+        // 3) Use Interface/Implementation binding to allow TypeHinting to resolve the right class.
+        $this->app->bind(\AscentCreative\Store\Models\Product::class, $cls = config('store.models.product'));
+
+        $loader = \Illuminate\Foundation\AliasLoader::getInstance($aliases);
 
   }
 
@@ -48,7 +69,8 @@ class StoreServiceProvider extends ServiceProvider
 
 
 
-    Sellables::register(\AscentCreative\Store\Models\Product::class);
+    // Sellables::register(\AscentCreative\Store\Models\Product::class);
+    Sellables::register(config('store.models.product'));
     
   }
 

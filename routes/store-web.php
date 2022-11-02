@@ -12,7 +12,7 @@ Route::namespace('AscentCreative\Store\Controllers')->middleware(['web'])->group
             });
         }
 
-        Route::basket('product', AscentCreative\Store\Models\Product::class);
+        Route::basket('product', config('store.models.product')); //AscentCreative\Store\Models\Product::class);
 
         Route::resource('product', ProductController::class, ['as'=>'store'])
                 ->parameters([
