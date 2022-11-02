@@ -17,11 +17,15 @@ class ZendImporter {
 
         Image::where('imageable_type', config('store.models.product'))->delete();
 
-        $res = DB::connection('zend')->select('select * from store_product');        
+        $res = DB::connection('zend')->select('select * from store_product');      
+    
 
         foreach($res as $prod) {
 
-            $product = app('product')::create([
+
+            $product = app('product')::updateOrCreate([
+                'id' => $prod->id,
+            ],[
 
                 'title' => $prod->name,
                 'sku' => $prod->sku,
