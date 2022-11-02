@@ -1,6 +1,8 @@
-@extends('page.show')
+{{-- @extends('page.show') --}}
+@extends(config('cms.wrapper_blade')) 
+{{-- @extends('base') --}}
 
-@section('pagebody')
+@section(config('cms.wrapper_blade_section'))
 
     <div class="centralise">
 
@@ -12,7 +14,7 @@
 
         <A href="{{ route('product.basket.add', ['sku'=>$model->sku, 'qty'=>5]) }}">Test Buy 5</a>
 
-        @include('stackeditor::render', ['content' => $model->description])    
+        {{-- @include('stackeditor::render', ['content' => $model->description])     --}}
         
 
     </div>
