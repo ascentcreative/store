@@ -3,6 +3,7 @@
 namespace AscentCreative\Store\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
 use AscentCreative\CMS\Traits\HasMetadata;
@@ -32,6 +33,12 @@ class Product extends Model implements Sellable
 
     public function getUrlAttribute() {
         return route('store.product.show', ['product' => $this]);
+    }
+
+    protected function priceString(): Attribute {
+        return Attribute::make(
+            get: fn ($value) => number_format($this->price, 2),
+        );
     }
 
     /** Eloquent Relationships */
