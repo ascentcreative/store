@@ -41,6 +41,17 @@ class Product extends Model implements Sellable
         );
     }
 
+
+    public function scopeSortByTitle($q, $dir) {
+        return $q->orderBy('title', $dir);
+    }
+
+    public function scopeSortByPrice($q, $dir) {
+        return $q->orderBy('price', $dir);
+    }
+
+
+
     /** Eloquent Relationships */
     // public function images() {
     //     return $this->morphMany(\AscentCreative\CMS\Models\Image::class, 'imageable');
