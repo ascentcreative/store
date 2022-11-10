@@ -24,7 +24,7 @@ class Product extends Model implements Sellable
 
     public $table = 'store_products';
 
-    public $fillable = ['id', 'title', 'description', 'short_description', 'sku', 'weight', 'price', 'is_physical', 'id_download', 'file_id'];
+    public $fillable = ['id', 'title', 'description', 'short_description', 'sku', 'weight', 'price', 'is_physical', 'is_download', 'file_id'];
 
     public $autocomplete_search = ['title'];
 
@@ -39,6 +39,13 @@ class Product extends Model implements Sellable
         return Attribute::make(
             get: fn ($value) => number_format($this->price, 2),
         );
+    }
+
+    protected function getPPStringAttribute() {
+        if ($this->is_physical) {
+            return '+P&P';
+        }
+        return '';
     }
 
 
