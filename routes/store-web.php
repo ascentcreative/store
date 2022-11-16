@@ -28,12 +28,12 @@ Route::namespace('AscentCreative\Store\Controllers')->middleware(['web'])->group
                 return view('store::admin.products.modal.addstock', ['product'=>$product]);
             })->name('admin.store.products.addstock');
 
-            Route::post('/products/{product}/addstock', [AscentCreative\Store\Controllers\Admin\ProductController::class, 'addstock'])
+            Route::post('/products/{product}/addstock', [config('store.controllers.product'), 'addstock'])
                             ->name('admin.store.products.addstock');
 
-            Route::get('/products/{product}/delete', [AscentCreative\Store\Controllers\Admin\ProductController::class, 'delete']);
+            Route::get('/products/{product}/delete', [config('store.controllers.product'), 'delete']);
             
-            Route::resource('/products', \Admin\ProductController::class, ['as'=>'admin.store']);
+            Route::resource('/products', config('store.controllers.product'), ['as'=>'admin.store']);
 
             Route::resource('stock', \Admin\StockController::class, ['as'=>'admin.store']);
 

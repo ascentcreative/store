@@ -10,6 +10,10 @@ return [
 
     'models' => [
         'product' => 'AscentCreative\Store\Models\Product',
-    ]
+    ],
+    
+    'controllers' => [
+        'product' => 'AscentCreative\Store\Controllers\Admin\ProductController',
+    ],
     
 ];
