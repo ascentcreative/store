@@ -17,10 +17,11 @@ use AscentCreative\Checkout\Traits\Sellable as SellableTrait;
 use AscentCreative\Store\Traits\Stockable;
 
 use AscentCreative\Images\Traits\HasGalleries;
+use AscentCreative\Store\Traits\HasCategories;
 
 class Product extends Model implements Sellable
 {
-    use HasFactory, HasMetadata, HasSlug, Shippable, Stockable, SellableTrait, Autocompletable, HasGalleries;
+    use HasFactory, HasMetadata, HasSlug, Shippable, Stockable, SellableTrait, Autocompletable, HasGalleries, HasCategories;
 
     public $table = 'store_products';
 
@@ -57,9 +58,13 @@ class Product extends Model implements Sellable
         return $q->orderBy('price', $dir);
     }
 
+ 
 
 
     /** Eloquent Relationships */
+   
+
+
     // public function images() {
     //     return $this->morphMany(\AscentCreative\CMS\Models\Image::class, 'imageable');
     // }

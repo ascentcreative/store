@@ -38,6 +38,11 @@ class Product extends BaseForm {
                     Textarea::make("short_descrition", "Summary")
                         ->rows(3),
 
+                    ForeignKeySelect::make('categories','Categories', 'checkbox')
+                                            ->query(\AscentCreative\Store\Models\Category::query())
+                                            ->labelField('name')
+                                            ->sortField('name'),
+
 
                 ]),
 
