@@ -8,6 +8,7 @@ use AscentCreative\StackEditor\StackEditor;
 use AscentCreative\Forms\Fields\Textarea;
 use AscentCreative\Forms\Fields\HasMany;
 use AscentCreative\Forms\Fields\ForeignKeySelect;
+use AscentCreative\Forms\Fields\PivotList;
 use AscentCreative\Forms\Fields\FileUpload;
 
 use AscentCreative\Images\Forms\Fields\GalleryUpload;
@@ -38,12 +39,19 @@ class Product extends BaseForm {
                     Textarea::make("short_descrition", "Summary")
                         ->rows(3),
 
-                    ForeignKeySelect::make('categories','Categories', 'checkbox')
-                                            ->query(\AscentCreative\Store\Models\Category::query())
-                                            ->labelField('name')
-                                            ->sortField('name'),
+                    // ideally, this would be a type ahead kinda field
+                    // i.e. a pivot list, you muppet... d'oh
+                    // ForeignKeySelect::make('categories','Categories', 'checkbox')
+                    //                         ->query(\AscentCreative\Store\Models\Category::query())
+                    //                         ->labelField('name')
+                    //                        ->sortField('name'),
 
+                    // PivotList::make('categories','Categories')
+                    //                         ->query(\AscentCreative\Store\Models\Category::query())
+                    //                         ->labelField('name')
+                    //                        ->sortField('name'),
 
+                   
                 ]),
 
 
@@ -71,6 +79,16 @@ class Product extends BaseForm {
                             GalleryUpload::make('images', 'Product Images:')
                                 ->disk('images')->path('gallery-images'),
                             
+                        ]),
+
+                    Tab::make('tab_cats', "Categories")
+                        ->children([
+                            PivotList::make('categories', 'Categories')
+                            // ->description('The contacts which this login can access in the Writers Portal')
+                             ->labelField('name')
+                             ->optionRoute(route('store-category.autocomplete'))
+                             ->optionModel(\AscentCreative\Store\Models\Category::class)
+                             ->sortField('name'),
                         ]),
 
                     Tab::make('physical', "Physical")
