@@ -39,4 +39,7 @@ Route::namespace('AscentCreative\Store\Controllers')->middleware(['web'])->group
 
     });
 
+
+    Route::autocomplete('store-category', \AscentCreative\Store\Models\Category::class, 'name');
+
 });

@@ -6,14 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use AscentCreative\CMS\Traits\HasSlug;
+use AscentCreative\CMS\Traits\Autocompletable;
 
 
 class Category extends Model
 {
-    use HasFactory, HasSlug;
+    use HasFactory, HasSlug, Autocompletable;
 
     public $table = 'store_categories';
-
+    public $autocomplete_search = ['name']; 
+    
     public $fillable = ['name', 'slug'];
 
     public function products() {
