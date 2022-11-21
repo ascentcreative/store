@@ -12,6 +12,7 @@ use AscentCreative\CMS\Traits\HasSlug;
 use AscentCreative\Checkout\Contracts\Sellable;
 use AscentCreative\Checkout\Traits\Shippable;
 use AscentCreative\CMS\Traits\Autocompletable;
+use AscentCreative\CMS\Traits\Publishable;
 use AscentCreative\Checkout\Traits\Sellable as SellableTrait;
 
 use AscentCreative\Store\Traits\Stockable;
@@ -21,7 +22,7 @@ use AscentCreative\Store\Traits\HasCategories;
 
 class Product extends Model implements Sellable
 {
-    use HasFactory, HasMetadata, HasSlug, Shippable, Stockable, SellableTrait, Autocompletable, HasGalleries, HasCategories;
+    use HasFactory, HasMetadata, HasSlug, Shippable, Stockable, SellableTrait, Autocompletable, HasGalleries, HasCategories, Publishable;
 
     public $table = 'store_products';
 
@@ -58,7 +59,19 @@ class Product extends Model implements Sellable
         return $q->orderBy('price', $dir);
     }
 
- 
+
+    // Status attribute:
+    public function getStatusAttribute() {
+        if($this->publishStatus != 'live') {
+            return $this->publishStatus;
+        } 
+        
+        if($this->stockStatus != 'in_stock') {
+            return $this->stockStatus;
+        } 
+
+        return 'live';
+    }
 
 
     /** Eloquent Relationships */

@@ -33,10 +33,20 @@ trait Stockable {
         $sold = $this->ordered()->whereHas('order', function($q) {
             $q->where('confirmed', 1);
         })->sum('qty');
-
-        
+  
         return $stock - $sold;
 
     }   
+
+
+
+    public function getStockStatusAttribute() {
+
+        // check a stock threshold
+
+        return 'in_stock';
+
+    }
+
 
 }

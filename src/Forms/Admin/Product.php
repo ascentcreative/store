@@ -39,6 +39,9 @@ class Product extends BaseForm {
                     Textarea::make("short_descrition", "Summary")
                         ->rows(3),
 
+
+                    \AscentCreative\CMS\Forms\Subform\Publishable::make(''),
+
                     // ideally, this would be a type ahead kinda field
                     // i.e. a pivot list, you muppet... d'oh
                     // ForeignKeySelect::make('categories','Categories', 'checkbox')

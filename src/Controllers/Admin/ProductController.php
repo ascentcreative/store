@@ -19,6 +19,8 @@ class ProductController extends AdminBaseController
     static $bladePath = 'store::admin.products';
     static $formClass = 'AscentCreative\Store\Forms\Admin\Product';
 
+    public $ignoreScopes = ['published', 'publish_sort'];
+
     public $indexSearchFields = ['title'];
 
     public function addstock() {
