@@ -43,6 +43,7 @@ class Product extends Model implements Sellable
         );
     }
 
+
     protected function getPPStringAttribute() {
         if ($this->is_physical) {
             return '+P&P';
@@ -75,7 +76,9 @@ class Product extends Model implements Sellable
 
 
     /** Eloquent Relationships */
-   
+   public function relatedProducts() {
+        return $this->hasManyThrough(app('product'), RelatedProduct::class, 'product_id', 'id', 'id', 'related_id');
+   }
 
 
     // public function images() {
