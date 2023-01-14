@@ -4,6 +4,7 @@ namespace AscentCreative\Store;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Routing\Router;
 
 
@@ -23,6 +24,9 @@ class StoreServiceProvider extends ServiceProvider
     );
     
     $this->registerModelAliases();
+
+    Gate::policy(app('product')::class, \AscentCreative\Store\Policies\ProductPolicy::class);
+
   }
 
 
