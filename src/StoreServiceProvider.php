@@ -25,8 +25,8 @@ class StoreServiceProvider extends ServiceProvider
     
     $this->registerModelAliases();
 
-    Gate::policy(app('product')::class, \AscentCreative\Store\Policies\ProductPolicy::class);
-
+    Gate::policy(config('store.models.product'), \AscentCreative\Store\Policies\ProductPolicy::class);
+  
   }
 
 

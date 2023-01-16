@@ -14,7 +14,8 @@
     "kalnoy/nestedset": "^6.0",
     "doctrine/dbal": "^3.0",
     "stripe/stripe-php": "^7.75",
-    "ascentcreative/images": "dev-dev"
+    "ascentcreative/images": "dev-dev",
+    "ascentcreative/sitesearch": "dev-dev"
   },
   "autoload": {
     "psr-4": {
