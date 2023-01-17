@@ -32,9 +32,13 @@ class Product extends Model implements Sellable
 
 
     public function getIndexableAttribute() {
-        return ['title', function($model) {
-                return 'xyz';
-            }];
+        return [
+            'title', 
+            function($model) {
+                return \AscentCreative\StackEditor\StackIndexer::extract($model, 'description');
+            },
+            'short_description'
+            ];
     }
 
 
