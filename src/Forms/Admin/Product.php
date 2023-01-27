@@ -9,7 +9,7 @@ use AscentCreative\Forms\Fields\Textarea;
 use AscentCreative\Forms\Fields\HasMany;
 use AscentCreative\Forms\Fields\ForeignKeySelect;
 use AscentCreative\Forms\Fields\PivotList;
-use AscentCreative\Forms\Fields\FileUpload;
+use AscentCreative\Files\Fields\FileUpload;
 
 use AscentCreative\Images\Forms\Fields\GalleryUpload;
 use AscentCreative\CMS\Forms\Structure\Screenblock;
@@ -112,7 +112,10 @@ class Product extends BaseForm {
                                 ->uncheckedValue(0),
 
 
-                            FileUpload::make('file_id', 'File')
+                            // FileUpload::make('file_id', 'File')
+                            //     ->disk('store')->path('payloads'),
+
+                            FileUpload::make('payload', 'File')
                                 ->disk('store')->path('payloads'),
                                 
                         

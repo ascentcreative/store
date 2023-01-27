@@ -47,6 +47,14 @@ class ProductController extends Controller
 
     }
 
+    public function download(Product $product) {
+
+        $this->authorize('download', $product);
+    
+        return $product->file('payload')->first()->download();
+
+    }
+
 
 
 
