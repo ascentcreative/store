@@ -12,7 +12,12 @@ Route::namespace('AscentCreative\Store\Controllers')->middleware(['web'])->group
             });
         }
 
+        
+
         Route::basket('product', config('store.models.product')); //AscentCreative\Store\Models\Product::class);
+
+        Route::get('/product/{product:slug}/download', [config('store.controllers.public.product'), 'download'])
+            ->name('product.download');
 
         Route::resource('product', ProductController::class, ['as'=>'store'])
                 ->parameters([
@@ -33,7 +38,7 @@ Route::namespace('AscentCreative\Store\Controllers')->middleware(['web'])->group
 
             Route::get('/products/{product}/delete', [config('store.controllers.product'), 'delete']);
             
-            Route::resource('/products', config('store.controllers.product'), ['as'=>'admin.store']);
+            Route::resource('/products', config('store.controllers.admin.product'), ['as'=>'admin.store']);
 
             Route::resource('stock', \Admin\StockController::class, ['as'=>'admin.store']);
 

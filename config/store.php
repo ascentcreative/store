@@ -13,7 +13,13 @@ return [
     ],
     
     'controllers' => [
-        'product' => 'AscentCreative\Store\Controllers\Admin\ProductController',
+        'admin' => [
+            'product' => 'AscentCreative\Store\Controllers\Admin\ProductController',
+        ],
+        'public' => [
+            'product' => 'AscentCreative\Store\Controllers\ProductController',
+        ],
+       
     ],
     
 ];

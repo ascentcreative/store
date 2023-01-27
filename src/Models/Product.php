@@ -20,15 +20,23 @@ use AscentCreative\Store\Traits\Stockable;
 use AscentCreative\Images\Traits\HasGalleries;
 use AscentCreative\Store\Traits\HasCategories;
 
+use AscentCreative\Files\Traits\HasFiles;
+
 use AscentCreative\SiteSearch\Traits\Indexable;
 
 class Product extends Model implements Sellable
 {
-    use HasFactory, HasMetadata, HasSlug, Shippable, Stockable, SellableTrait, Autocompletable, HasGalleries, HasCategories, Publishable, Indexable;
+    use HasFactory, HasMetadata, HasSlug, Shippable, Stockable, SellableTrait, Autocompletable, HasFiles, HasGalleries, HasCategories, Publishable, Indexable;
 
     public $table = 'store_products';
 
     public $fillable = ['id', 'title', 'description', 'short_description', 'sku', 'weight', 'price', 'is_physical', 'is_download', 'file_id'];
+
+    public $singlefile_fields = ['payload'];
+
+    protected $casts = [
+        'description' => 'array',
+    ];
 
 
     public function getIndexableAttribute() {
