@@ -19,7 +19,7 @@ Route::namespace('AscentCreative\Store\Controllers')->middleware(['web'])->group
         Route::get('/product/{product:slug}/download', [config('store.controllers.public.product'), 'download'])
             ->name('product.download');
 
-        Route::resource('product', ProductController::class, ['as'=>'store'])
+        Route::resource('product', config('store.controllers.public.product'), ['as'=>'store'])
                 ->parameters([
                     'product' => 'product:slug'
                 ]);
@@ -33,10 +33,10 @@ Route::namespace('AscentCreative\Store\Controllers')->middleware(['web'])->group
                 return view('store::admin.products.modal.addstock', ['product'=>$product]);
             })->name('admin.store.products.addstock');
 
-            Route::post('/products/{product}/addstock', [config('store.controllers.product'), 'addstock'])
+            Route::post('/products/{product}/addstock', [config('store.controllers.admin.product'), 'addstock'])
                             ->name('admin.store.products.addstock');
 
-            Route::get('/products/{product}/delete', [config('store.controllers.product'), 'delete']);
+            Route::get('/products/{product}/delete', [config('store.controllers.admin.product'), 'delete']);
             
             Route::resource('/products', config('store.controllers.admin.product'), ['as'=>'admin.store']);
 
