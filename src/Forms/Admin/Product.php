@@ -116,7 +116,8 @@ class Product extends BaseForm {
                             //     ->disk('store')->path('payloads'),
 
                             FileUpload::make('payload', 'File')
-                                ->disk('store')->path('payloads'),
+                                ->disk('store')->path('payloads')
+                                ->chunkSize('6M'),
                                 
                         
                         ])
