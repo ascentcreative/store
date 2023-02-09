@@ -19,6 +19,9 @@ Route::namespace('AscentCreative\Store\Controllers')->middleware(['web'])->group
         Route::get('/product/{product:slug}/download', [config('store.controllers.public.product'), 'download'])
             ->name('product.download');
 
+        Route::get('/product/{product:slug}/freedownload', [config('store.controllers.public.product'), 'freedownload'])
+            ->name('product.freedownload');
+
         Route::resource('product', config('store.controllers.public.product'), ['as'=>'store'])
                 ->parameters([
                     'product' => 'product:slug'

@@ -57,6 +57,24 @@ class ProductController extends Controller
     }
 
 
+    public function freedownload(Product $product) {
+
+        // $this->authorize('download', $product);
+
+        if(Auth()->user() && Auth()->user()->can('download', $product)) {
+
+            // NB - the download is logged by the File Model
+            return $product->file('payload')->first()->download();
+
+        } else {
+            if(request()->wantsJSON()) {
+                return response('Please Login', 401);
+            } 
+        }
+           
+    }
+
+
 
 
 }
