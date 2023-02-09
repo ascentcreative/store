@@ -38,6 +38,9 @@ class Product extends Model implements Sellable
         'description' => 'array',
     ];
 
+    public function disableCasts() {
+        $this->casts = [];
+    }
 
     public function getIndexableAttribute() {
         return [
