@@ -59,7 +59,9 @@ class Product extends BaseForm {
 
 
             Tabs::make('tabs_options')
+            
                 ->children([
+                   
 
                     Tab::make('details', "Details")
                         ->children([
@@ -117,10 +119,13 @@ class Product extends BaseForm {
 
                             FileUpload::make('payload', 'File')
                                 ->disk('store')->path('payloads')
+                                // ->browseServer(true)
                                 ->chunkSize(config('store.upload.chunksize', '12M')),
                                 
                         
-                        ])
+                        ]),
+
+                   
 
 
                 ]),
