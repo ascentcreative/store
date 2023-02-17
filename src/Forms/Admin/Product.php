@@ -11,7 +11,7 @@ use AscentCreative\Forms\Fields\ForeignKeySelect;
 use AscentCreative\Forms\Fields\PivotList;
 use AscentCreative\Files\Fields\FileUpload;
 
-use AscentCreative\Images\Forms\Fields\GalleryUpload;
+use AscentCreative\Files\Fields\GalleryUpload;
 use AscentCreative\CMS\Forms\Structure\Screenblock;
 use AscentCreative\Forms\Structure\Tabs;
 use AscentCreative\Forms\Structure\Tab;
@@ -54,6 +54,8 @@ class Product extends BaseForm {
                     //                         ->labelField('name')
                     //                        ->sortField('name'),
 
+                    GalleryUpload::make('images', 'Product Images:')
+                    ->disk('images')->path('gallery-images'),
                    
                 ]),
 
@@ -81,8 +83,7 @@ class Product extends BaseForm {
                             //     ->multiple(true)
                             //     ->disk('store')->path('payloads'),
 
-                            GalleryUpload::make('images', 'Product Images:')
-                                ->disk('images')->path('gallery-images'),
+                          
                             
                         ]),
 

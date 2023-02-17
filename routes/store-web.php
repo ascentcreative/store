@@ -43,7 +43,7 @@ Route::namespace('AscentCreative\Store\Controllers')->middleware(['web'])->group
             
             Route::resource('/products', config('store.controllers.admin.product'), ['as'=>'admin.store']);
 
-            Route::resource('stock', \Admin\StockController::class, ['as'=>'admin.store']);
+            // Route::resource('stock', \Admin\StockController::class, ['as'=>'admin.store']);
 
     });
 

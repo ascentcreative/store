@@ -16,11 +16,10 @@ use AscentCreative\CMS\Traits\Publishable;
 use AscentCreative\Checkout\Traits\Sellable as SellableTrait;
 
 use AscentCreative\Store\Traits\Stockable;
-
-use AscentCreative\Images\Traits\HasGalleries;
 use AscentCreative\Store\Traits\HasCategories;
 
 use AscentCreative\Files\Traits\HasFiles;
+use AscentCreative\Files\Traits\HasGalleries;
 
 use AscentCreative\SiteSearch\Traits\Indexable;
 
