@@ -13,6 +13,7 @@ use AscentCreative\Files\Fields\FileUpload;
 
 use AscentCreative\Files\Fields\GalleryUpload;
 use AscentCreative\CMS\Forms\Structure\Screenblock;
+use AscentCreative\Forms\Structure\HTML;
 use AscentCreative\Forms\Structure\Tabs;
 use AscentCreative\Forms\Structure\Tab;
 
@@ -26,22 +27,39 @@ class Product extends BaseForm {
 
             Screenblock::make('details')
                 ->children([
-                    Input::make('title', 'Title')
-                            ->required(true),
-
-                    Input::make('sku', 'SKU')
-                        ->required(true),
-
-                    Input::make('price', "Price")
-                        ->preelement('£')
-                        ->required(true),
-
-                    Textarea::make("short_descrition", "Summary")
-                        ->rows(3),
 
 
-                    \AscentCreative\CMS\Forms\Subform\Publishable::make(''),
+                    HTML::make('<div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr))">', '</div>')
+                        ->children([
 
+                            HTML::make('<div style="grid-column: 1 / -2">', '</div>')
+                                ->children([
+                                    Input::make('title', 'Title')
+                                    ->required(true),
+                
+                                    Input::make('sku', 'SKU')
+                                        ->required(true),
+                
+                                    Input::make('price', "Price")
+                                        ->preelement('£')
+                                        ->required(true),
+                
+                                    Textarea::make("short_descrition", "Summary")
+                                        ->rows(3),
+                                ]),
+
+                            HTML::make('<div class="border-left" style="grid-column: -2">', '</div>')
+                                ->children([
+                                    \AscentCreative\CMS\Forms\Subform\Publishable::make(''),
+                                ])
+
+                        ]),
+
+
+                  
+
+
+                   
                     // ideally, this would be a type ahead kinda field
                     // i.e. a pivot list, you muppet... d'oh
                     // ForeignKeySelect::make('categories','Categories', 'checkbox')
@@ -54,9 +72,7 @@ class Product extends BaseForm {
                     //                         ->labelField('name')
                     //                        ->sortField('name'),
 
-                    GalleryUpload::make('images', 'Product Images:')
-                    ->disk('images')->path('gallery-images'),
-                   
+                    
                 ]),
 
 
@@ -75,14 +91,8 @@ class Product extends BaseForm {
                     Tab::make('tab_images', "Images")
                         ->children([
 
-                            // HasMany::make('images', "Images")
-                            //     ->relationship('images')->package('store')
-                            //     ->setDescription("The first image will be used as the main image in list views."),
-
-                            // FileUpload::make('images', 'Images')
-                            //     ->multiple(true)
-                            //     ->disk('store')->path('payloads'),
-
+                            GalleryUpload::make('images', 'Product Images:')
+                                 ->disk('images')->path('gallery-images'),
                           
                             
                         ]),
@@ -113,10 +123,6 @@ class Product extends BaseForm {
 
                             Checkbox::make("is_download", "Download")
                                 ->uncheckedValue(0),
-
-
-                            // FileUpload::make('file_id', 'File')
-                            //     ->disk('store')->path('payloads'),
 
                             FileUpload::make('payload', 'File')
                                 ->disk('store')->path('payloads')
