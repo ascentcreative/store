@@ -131,7 +131,8 @@ class Product extends Model implements Sellable
     }
 
     public function getDownloadUrl() {
-        return null;
+        // return null;
+        return route('product.download', ['product'=>$this]);
     }
 
 
