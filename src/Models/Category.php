@@ -19,7 +19,7 @@ class Category extends Model
     public $fillable = ['name', 'slug'];
 
     public function products() {
-        return $this->belongsToMany(Product::class, ProductCategory::class);
+        return $this->belongsToMany(app('product'), ProductCategory::class);
     }
 
     public function scopeHasProducts($q) {
