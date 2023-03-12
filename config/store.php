@@ -11,6 +11,10 @@ return [
     'models' => [
         'product' => 'AscentCreative\Store\Models\Product',
     ],
+
+    'admin_forms' => [
+        'product' => 'AscentCreative\Store\Forms\Admin\Product',
+    ],
     
     'controllers' => [
         'admin' => [

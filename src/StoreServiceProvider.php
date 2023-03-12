@@ -35,10 +35,16 @@ class StoreServiceProvider extends ServiceProvider
         // For each model:
         // 1) Set up an alias for the Facade (allows Page::method() calls)
         $aliases['Product'] = \AscentCreative\Store\Facades\ProductFacade::class;
+        $aliases['ProductForm'] = \AscentCreative\Store\Facades\ProductFormFacade::class;
+
 
         // 2) resolve the key in getFacadeAccessor()
         $this->app->bind('product',function(){
             $cls = config('store.models.product');
+            return new $cls();
+        });
+        $this->app->bind('product_form',function(){
+            $cls = config('store.admin_forms.product');
             return new $cls();
         });
 

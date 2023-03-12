@@ -27,8 +27,6 @@ class Product extends BaseForm {
 
             Screenblock::make('details')
                 ->children([
-
-
                     HTML::make('<div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr))">', '</div>')
                         ->children([
 

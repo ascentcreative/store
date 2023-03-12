@@ -17,7 +17,7 @@ class ProductController extends AdminBaseController
     // static $modelClass = 'AscentCreative\Store\Models\Product';
     static $modelClass = 'Product';
     static $bladePath = 'store::admin.products';
-    static $formClass = 'AscentCreative\Store\Forms\Admin\Product';
+    static $formClass = 'ProductForm'; //'AscentCreative\Store\Forms\Admin\Product';
 
     public $ignoreScopes = ['published', 'publish_sort'];
 
