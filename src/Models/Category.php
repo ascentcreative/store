@@ -23,7 +23,7 @@ class Category extends Model
     }
 
     public function scopeHasProducts($q) {
-        return $this->whereHas('products');
+        $q->whereHas('products');
     }
 
 }
